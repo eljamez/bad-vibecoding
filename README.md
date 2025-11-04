@@ -1,5 +1,35 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Database Setup
+
+This project uses **Prisma ORM** with **PostgreSQL** (hosted on Railway).
+
+### Quick Start
+
+1. **Create a `.env` file** in the root directory:
+   ```bash
+   touch .env
+   ```
+
+2. **Add your Railway PostgreSQL connection string** to `.env`:
+   ```env
+   DATABASE_URL="postgresql://username:password@hostname:port/database?sslmode=require"
+   ```
+   
+   Get your `DATABASE_URL` from Railway → Your PostgreSQL Service → Variables tab
+
+3. **Generate Prisma Client**:
+   ```bash
+   npm run prisma:generate
+   ```
+
+4. **Run database migrations**:
+   ```bash
+   npm run prisma:migrate
+   ```
+
+For detailed instructions on setting up Railway PostgreSQL, see [RAILWAY_SETUP.md](./RAILWAY_SETUP.md).
+
 ## Getting Started
 
 First, run the development server:
