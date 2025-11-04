@@ -1,9 +1,18 @@
 import { prisma } from '@/lib/prisma';
+import type { User, Post } from '@prisma/client';
+
+type UserWithPosts = User & {
+  posts: Post[];
+};
+
+type PostWithAuthor = Post & {
+  author: User;
+};
 
 export default async function TestDbPage() {
-  let users = [];
-  let posts = [];
-  let error = null;
+  let users: UserWithPosts[] = [];
+  let posts: PostWithAuthor[] = [];
+  let error: string | null = null;
 
   try {
     // Fetch users and posts from the database

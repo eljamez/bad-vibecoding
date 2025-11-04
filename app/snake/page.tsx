@@ -91,12 +91,7 @@ export default function SnakePage() {
     isPausedRef.current = isPaused;
   }, [isPaused]);
 
-  // Fetch high scores
-  useEffect(() => {
-    fetchHighScores();
-  }, []);
-
-  const fetchHighScores = async () => {
+  const fetchHighScores = useCallback(async () => {
     try {
       const response = await fetch('/api/snake-scores');
       if (response.ok) {
@@ -106,7 +101,12 @@ export default function SnakePage() {
     } catch (error) {
       console.error('Error fetching high scores:', error);
     }
-  };
+  }, []);
+
+  // Fetch high scores
+  useEffect(() => {
+    fetchHighScores();
+  }, [fetchHighScores]);
 
   const generateFood = useCallback((): Position => {
     const newFood = {
@@ -117,10 +117,11 @@ export default function SnakePage() {
     const isOnSnake = snakeRef.current.some(
       (segment) => segment.x === newFood.x && segment.y === newFood.y
     );
+    // eslint-disable-next-line react-hooks/immutability
     return isOnSnake ? generateFood() : newFood;
   }, []);
 
-  const resetGame = () => {
+  const resetGame = useCallback(() => {
     setSnake(INITIAL_SNAKE);
     setDirection(INITIAL_DIRECTION);
     setFood(generateFood());
@@ -129,18 +130,18 @@ export default function SnakePage() {
     setScore(0);
     setShowNameInput(false);
     setIsPaused(false);
-  };
+  }, [generateFood]);
 
-  const startGame = () => {
+  const startGame = useCallback(() => {
     resetGame();
     setGameStarted(true);
-  };
+  }, [resetGame]);
 
-  const togglePause = () => {
+  const togglePause = useCallback(() => {
     if (gameStarted && !gameOver) {
       setIsPaused((prev) => !prev);
     }
-  };
+  }, [gameStarted, gameOver]);
 
   const saveScore = async () => {
     const nameToSave = playerName.trim() || session?.user?.name;
@@ -282,7 +283,7 @@ export default function SnakePage() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, []);
+  }, [startGame, togglePause]);
 
   // Draw game
   useEffect(() => {
@@ -490,7 +491,7 @@ export default function SnakePage() {
                   <h3 className="text-sm font-semibold text-green-300 mb-2">Rules</h3>
                   <ul className="text-sm text-slate-300 space-y-1">
                     <li>• Eat the red dots to grow</li>
-                    <li>• Don't hit walls or yourself</li>
+                    <li>• Don&apos;t hit walls or yourself</li>
                     <li>• Each food = 10 points</li>
                   </ul>
                 </div>

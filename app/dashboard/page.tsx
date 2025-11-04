@@ -64,7 +64,7 @@ export default async function DashboardPage() {
 
             <div>
               <h2 className="text-2xl font-semibold text-slate-200 mb-4">
-                What's Next?
+                What&apos;s Next?
               </h2>
               <ul className="space-y-2 text-slate-300">
                 <li className="flex items-start">
