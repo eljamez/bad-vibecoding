@@ -1,0 +1,12 @@
+# Cursor AI Rules
+
+## README Maintenance
+
+**IMPORTANT:** Whenever a new app is added or an existing app is updated in the `/app` directory, you must check and update the README.md file to ensure:
+
+1. The mini-app is listed in the "Mini-Apps" section
+2. The description accurately reflects the app's current functionality
+3. Any new technologies/dependencies are listed in the "Technologies Used" section
+
+Always verify the README.md is up-to-date before completing a task that involves adding or modifying apps.
+
