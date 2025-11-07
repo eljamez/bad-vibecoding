@@ -15,12 +15,12 @@ A collection of mini-apps and games built with Next.js.
 
 ## Mini-Apps
 
-- **Calculator** - A simple calculator app
+- **Calculator** - Full-featured calculator with basic arithmetic operations, keyboard support, and calculation history
 - **Draw** - A drawing canvas application
 - **Memory Game** - Test your memory with this classic card-matching game
 - **Snake** - Classic snake game with score tracking
 - **Todo** - Task management application
-- **Whack-a-Mole** - Fast-paced reaction game
+- **Whack-a-Mole** - Fast-paced arcade game with three difficulty levels, combo system, and score tracking
 - **Dashboard** - User dashboard with profile management
 
 ---

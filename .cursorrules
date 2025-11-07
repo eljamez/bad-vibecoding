@@ -10,3 +10,52 @@
 
 Always verify the README.md is up-to-date before completing a task that involves adding or modifying apps.
 
+## Mini-App Design Guidelines
+
+When creating or updating mini-apps in the `/app` directory, maintain consistency with the existing design system:
+
+### Layout Structure
+- Use full-screen gradient backgrounds: `min-h-screen bg-gradient-to-br from-{color}-900 via-{color2}-800 to-{color}-900`
+- Include a "Back to Home" button at the top-left with consistent styling
+- Wrap main content in: `bg-slate-800/50 backdrop-blur-sm border border-{color}-500/30 rounded-3xl p-8`
+- Use max-width containers: `max-w-2xl` to `max-w-7xl` depending on content needs
+
+### Color Schemes
+Each mini-app should use a unique color theme:
+- Calculator: Teal/Cyan (`teal-*`, `cyan-*`)
+- Snake: Green/Emerald (`green-*`, `emerald-*`)
+- Whack-a-Mole: Orange/Red (`orange-*`, `red-*`)
+- Choose complementary colors for new apps to maintain variety
+
+### Common Elements
+- **Headers**: Large emoji (text-6xl), title (text-4xl font-bold), subtitle (text-slate-400)
+- **Cards/Panels**: `bg-slate-900/50 rounded-xl p-4 border border-{color}-500/20`
+- **Buttons**: Use rounded-xl, transition effects, hover states, and active states
+  - Primary: `bg-{color}-500 hover:bg-{color}-600`
+  - Secondary: `bg-slate-600 hover:bg-slate-700`
+- **Stats/Info boxes**: Grid layout with consistent padding and borders
+- **Text colors**: White for primary text, `{color}-300/400` for accents, `slate-400` for secondary text
+
+### Interactive Elements
+- Add hover effects: `hover:scale-105`, `hover:text-{color}-100`
+- Add active/press effects: `active:scale-95`
+- Use transitions: `transition-all` or `transition-colors`
+- Include disabled states where appropriate
+
+### Responsive Design
+- Use responsive grids: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
+- Ensure mobile-friendly layouts with appropriate padding: `p-4`
+- Stack elements vertically on small screens
+
+### Accessibility
+- Use semantic HTML elements
+- Include proper ARIA labels where needed
+- Ensure sufficient color contrast
+- Make interactive elements keyboard accessible
+
+### Code Structure
+- Mark pages as `'use client'` when using React hooks
+- Use TypeScript interfaces for complex state
+- Implement proper cleanup for timers and event listeners
+- Use `useCallback` for performance optimization where appropriate
+
